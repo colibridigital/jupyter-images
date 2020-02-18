@@ -13,6 +13,7 @@ A fully featured data science image, based on the Jupyter Scipy Notebook image. 
 * Pyarrow
 * ODBC Driver 17
 * R kernel
+* Julia kernel
 * Lots of useful R and Jupyter packages
 * Some handy terminal commands like htop, cron, nmon, iftop, and libpcap
 
