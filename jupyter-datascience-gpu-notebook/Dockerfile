@@ -19,6 +19,18 @@ RUN apt-get update \
     locales \
     fonts-liberation \
     run-one \
+    openjdk-8-jre-headless \ 
+    ca-certificates-java \
+    ssh \
+    vim \
+    exuberant-ctags \
+    gcc \
+    g++ \
+    build-essential \
+    unixodbc-dev \
+    r-base \
+    libpq-dev \
+    python-dev \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
