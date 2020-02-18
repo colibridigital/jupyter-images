@@ -12,4 +12,4 @@ A fully featured data science image, based on the Jupyter Scipy Notebook image. 
 * Some handy terminal commands like htop, cron, nmon, iftop, and libpcap
 
 ## Jupyter Datascience GPU Notebook
-The same as the Jupyter Datascience Notebook image, but with added CUDA!
+The same as the Jupyter Datascience Notebook image, but with added CUDA!  This image is based on tensorflow/tensorflow:latest-gpu.
