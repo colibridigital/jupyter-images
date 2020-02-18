@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/colibridigital/jupyter-images.svg?style=svg)](https://circleci.com/gh/colibridigital/jupyter-images)
+
 # Jupyter Images
 A collection of useful, fully featured images that builds on the great work by the Jupyter team by adding additional handy features.
 
