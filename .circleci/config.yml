@@ -1,0 +1,48 @@
+version: 2.1
+jobs:
+    build-push-jupyter-datascience-notebook:
+        machine:
+            image: ubuntu-1604:201903-01
+            resource_class: large
+            docker_layer_caching: true
+        steps:
+            - checkout
+            - run:
+                name: docker login
+                command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+            - run:
+                name: build jupyter datascience image
+                command: docker build -t colibridigital/jupyter-datascience-notebook jupyter-datascience-notebook/
+            - run:
+                name: push jupyter datascience image
+                command: docker push colibridigital/jupyter-datascience-notebook
+
+    build-push-jupyter-datascience-gpu-notebook:
+        machine:
+            image: ubuntu-1604:201903-01
+            resource_class: large
+            docker_layer_caching: true
+        steps:
+            - checkout
+            - run:
+                name: docker login
+                command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+            - run:
+                name: build jupyter datascience gpu image
+                command: docker build -t colibridigital/jupyter-datascience-gpu-notebook jupyter-datascience-gpu-notebook/
+            - run:
+                name: push jupyter datascience gpu image
+                command: docker push colibridigital/jupyter-datascience-gpu-notebook
+workflows:
+    version: 2.1
+    build-push-images:
+        jobs:
+        - build-push-jupyter-datascience-notebook:
+            filters:
+                branches:
+                    only: master
+        - build-push-jupyter-datascience-gpu-notebook:
+            filters:
+                branches:
+                    only: master
+    
