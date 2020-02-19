@@ -61,17 +61,16 @@ RUN conda install --quiet -y 'pyarrow' && \
 RUN conda install -c r r-irkernel
 
 # ------------------------------------------------------------------------------------Install Julia Kernel------------------------------------------------------------------------------------
-ADD ./install_ijulia.jl ./
+ADD ./install_ijulia.jl /tmp/install_ijulia
 ENV JULIA_DEPOT_PATH=/opt/julia
 RUN mkdir -p /opt/julia \
  && wget --no-check-certificate --quiet "https://julialang-s3.julialang.org/bin/linux/x64/1.2/julia-1.2.0-linux-x86_64.tar.gz" -O julia.tar.gz \
  && tar -C /opt -xvf julia.tar.gz \
  && ln -s /opt/julia-1.2.0/bin/julia /usr/bin/
-RUN julia install_ijulia.jl
+RUN julia /tmp/install_ijulia
 RUN chmod -R 777 .local/ \
   && chmod -R 777 /opt/julia/ \
   && rm julia.tar.gz \
-  && rm install_ijulia.jl \
   && fix-permissions /opt/julia/
 
 # ------------------------------------------------------------------------------------Install Microsoft ODBC Driver 17 for SQL Server------------------------------------------------------------------------------------

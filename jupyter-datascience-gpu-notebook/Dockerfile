@@ -153,15 +153,14 @@ RUN export MAKE='make -j 8'
 RUN Rscript packages.R
 
 # ------------------------------------------------------------------------------------Install Julia Kernel------------------------------------------------------------------------------------
-ADD ./install_ijulia.jl ./
+ADD ./install_ijulia.jl /tmp/install_ijulia
 RUN wget --no-check-certificate --quiet "https://julialang-s3.julialang.org/bin/linux/x64/1.2/julia-1.2.0-linux-x86_64.tar.gz" -O julia.tar.gz \
  && tar -xvf julia.tar.gz \
  && ln -s /home/jovyan/julia-1.2.0/bin/julia /usr/local/bin
-RUN julia install_ijulia.jl
+RUN julia /tmp/install_ijulia
 RUN chmod -R 777 .local/ \
   && chmod -R 777 /home/jovyan/julia-1.2.0 \
   && rm julia.tar.gz \
-  && rm install_ijulia.jl \
   && fix-permissions /home/jovyan/julia-1.2.0
 
 # Switch back to jovyan to avoid accidental container runs as root
