@@ -18,7 +18,7 @@ RUN wget \
   && for i in $(echo $HADOOP_CLASSPATH | tr ":" "\n"); do cp $i /usr/local/hadoop-deps/ -r; done
 
 # ----------------------------------------------------------------------JUPYTER NOTEBOOK----------------------------------------------------------------
-FROM jupyter/scipy-notebook:1386e2046833
+FROM jupyter/scipy-notebook
 LABEL maintainer="james.cross@colibridigital.io"
 ENV SPARK_VERSION 2.4.1
 ENV SPARK_PACKAGE spark-${SPARK_VERSION}-bin-without-hadoop
@@ -46,6 +46,7 @@ RUN wget \
   && wget https://repo1.maven.org/maven2/org/apache/avro/avro/1.8.2/avro-1.8.2.jar -P /usr/local/hadoop-deps/ \
   && wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.11/${SPARK_VERSION}/spark-avro_2.11-${SPARK_VERSION}.jar -P /usr/local/hadoop-deps/ \
   && apt-get -y update \
+  && apt-get -y upgrade \
   && apt-get install --no-install-recommends -y openjdk-8-jre-headless ca-certificates-java ssh vim exuberant-ctags gcc g++ build-essential unixodbc-dev r-base libpq-dev python-dev \
   && rm -rf /var/lib/apt/lists/*
 
@@ -90,8 +91,8 @@ RUN apt-get -y update \
 # ------------------------------------------------------------------------------------R packages and dependencies------------------------------------------------------------------------------------
 ADD ./packages.R ./
 RUN export MAKE='make -j 8'
-RUN Rscript packages.R
+# RUN Rscript packages.R
 
-# ------------------------------------------------------------------------------------Python packages and dependencies------------------------------------------------------------------------------------
-ADD ./requirements.txt ./
-RUN pip --no-cache-dir install -r requirements.txt
+# # ------------------------------------------------------------------------------------Python packages and dependencies------------------------------------------------------------------------------------
+# ADD ./requirements.txt ./
+# RUN pip --no-cache-dir install -r requirements.txt
