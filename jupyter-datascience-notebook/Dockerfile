@@ -91,8 +91,8 @@ RUN apt-get -y update \
 # ------------------------------------------------------------------------------------R packages and dependencies------------------------------------------------------------------------------------
 ADD ./packages.R ./
 RUN export MAKE='make -j 8'
-# RUN Rscript packages.R
+RUN Rscript packages.R
 
-# # ------------------------------------------------------------------------------------Python packages and dependencies------------------------------------------------------------------------------------
-# ADD ./requirements.txt ./
-# RUN pip --no-cache-dir install -r requirements.txt
+# ------------------------------------------------------------------------------------Python packages and dependencies------------------------------------------------------------------------------------
+ADD ./requirements.txt ./
+RUN pip --no-cache-dir install -r requirements.txt
