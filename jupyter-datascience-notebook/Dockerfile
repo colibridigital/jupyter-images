@@ -18,7 +18,7 @@ RUN wget \
   && for i in $(echo $HADOOP_CLASSPATH | tr ":" "\n"); do cp $i /usr/local/hadoop-deps/ -r; done
 
 # ----------------------------------------------------------------------JUPYTER NOTEBOOK----------------------------------------------------------------
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:1386e2046833
 LABEL maintainer="james.cross@colibridigital.io"
 ENV SPARK_VERSION 2.4.1
 ENV SPARK_PACKAGE spark-${SPARK_VERSION}-bin-without-hadoop
