@@ -14,14 +14,15 @@ jobs:
                 command: docker build -t colibridigital/jupyter-datascience-notebook jupyter-datascience-notebook/
             - run:
                 name: tag image
-                command: | 
+                command: |
+                    date=$(date '+%Y-%m-%d')
                     docker tag colibridigital/jupyter-datascience-notebook colibridigital/jupyter-datascience-notebook:latest
-                    docker tag colibridigital/jupyter-datascience-notebook colibridigital/jupyter-datascience-notebook:$CIRCLE_BUILD_NUM
+                    docker tag colibridigital/jupyter-datascience-notebook colibridigital/jupyter-datascience-notebook:$date
             - run:
                 name: push jupyter datascience image
                 command: |
                     docker push colibridigital/jupyter-datascience-notebook:latest
-                    docker push colibridigital/jupyter-datascience-notebook:$CIRCLE_BUILD_NUM
+                    docker push colibridigital/jupyter-datascience-notebook:$date
 
     build-push-jupyter-datascience-gpu-notebook:
         machine:
@@ -37,13 +38,14 @@ jobs:
                 command: docker build -t colibridigital/jupyter-datascience-notebook:gpu jupyter-datascience-gpu-notebook/
             - run:
                 name: tag image
-                command: | 
-                    docker tag colibridigital/jupyter-datascience-notebook:gpu  colibridigital/jupyter-datascience-notebook:gpu-$CIRCLE_BUILD_NUM
+                command: |
+                    date=$(date '+%Y-%m-%d')
+                    docker tag colibridigital/jupyter-datascience-notebook:gpu  colibridigital/jupyter-datascience-notebook:gpu-$date
             - run:
                 name: push jupyter datascience gpu image
                 command: |
                     docker push colibridigital/jupyter-datascience-notebook:gpu
-                    docker push colibridigital/jupyter-datascience-notebook:gpu-$CIRCLE_BUILD_NUM
+                    docker push colibridigital/jupyter-datascience-notebook:gpu-$date
                     
 workflows:
     version: 2.1
