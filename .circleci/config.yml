@@ -43,4 +43,14 @@ workflows:
             filters:
                 branches:
                     only: master
+    weekly:
+        triggers:
+        - schedule:
+            cron: "0 1 * * 0"
+            filters:
+                branches:
+                    only: master
+        jobs:
+        - build-push-jupyter-datascience-notebook
+        - build-push-jupyter-datascience-gpu-notebook
     
