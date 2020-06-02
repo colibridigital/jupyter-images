@@ -47,7 +47,7 @@ RUN wget \
   && wget https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.11/${SPARK_VERSION}/spark-avro_2.11-${SPARK_VERSION}.jar -P /usr/local/hadoop-deps/ \
   && apt-get -y update \
   && apt-get -y upgrade \
-  && apt-get install --no-install-recommends -y openjdk-8-jre-headless ca-certificates-java ssh vim exuberant-ctags gcc g++ build-essential unixodbc-dev r-base libpq-dev python-dev \
+  && apt-get install --no-install-recommends -y curl openjdk-8-jre-headless ca-certificates-java ssh vim exuberant-ctags gcc g++ build-essential unixodbc-dev r-base libpq-dev python-dev \
   && rm -rf /var/lib/apt/lists/*
 
 # ------------------------------------------------------------------------------------PyArrow------------------------------------------------------------------------------------
@@ -91,6 +91,7 @@ RUN apt-get -y update \
 # ------------------------------------------------------------------------------------R packages and dependencies------------------------------------------------------------------------------------
 ADD ./packages.R ./
 RUN export MAKE='make -j 8'
+RUN wget http://mirrors.kernel.org/ubuntu/pool/main/r/readline6/libreadline6_6.3-8ubuntu2_amd64.deb && dpkg -i libreadline6_6.3-8ubuntu2_amd64.deb && rm libreadline6_6.3-8ubuntu2_amd64.deb 
 RUN Rscript packages.R
 
 # ------------------------------------------------------------------------------------Python packages and dependencies------------------------------------------------------------------------------------

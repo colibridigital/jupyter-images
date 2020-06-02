@@ -37,6 +37,6 @@ install.packages(
     "AzureAuth",
     "AzureStor"
   ),
-  repos = "https://cloud.r-project.org/",
+  repos = "https://cran.ma.imperial.ac.uk/",
   Ncpus = 8
 )
