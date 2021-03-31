@@ -40,7 +40,7 @@ django-core==1.4.1
 html5lib==1.0.1
 humanfriendly==4.18
 lightgbm==2.3.0
-lxml==4.4.1
+lxml==4.6.3
 memory-profiler==0.55.0
 PyMySQL==0.9.3
 python-dateutil==2.8.1
