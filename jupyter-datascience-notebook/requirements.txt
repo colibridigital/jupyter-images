@@ -66,7 +66,7 @@ pyarrow==0.15.1
 boto3==1.10.27
 dvc==0.71.0
 ibis-framework==1.2.0
-opencv-contrib-python==4.1.2.30
+opencv-contrib-python==4.2.0.32
 tensorflow-gpu==2.0.1
 Keras==2.3.1
 Pillow==6.2.1
