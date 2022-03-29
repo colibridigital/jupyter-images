@@ -53,7 +53,7 @@ xgboost==0.90
 zope.interface==4.7.1
 confuse==1.0.0
 lightgbm==2.3.0
-paramiko==2.6.0
+paramiko==2.10.1
 scp==0.13.2
 wapi-python==0.5.1
 Unidecode==1.1.1
